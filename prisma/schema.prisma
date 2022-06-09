@@ -17,8 +17,10 @@ model User {
   nombres String @db.VarChar(60)
   email String @unique @db.VarChar(120)
   hash String
+  role Int @db.TinyInt @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
 }
+
 
