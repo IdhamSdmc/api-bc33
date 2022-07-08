@@ -5,6 +5,7 @@ import * as argon from "argon2";
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { SignDto } from './dto/sign.dto';
 
 @Injectable()
 export class AuthService {
@@ -57,7 +58,7 @@ export class AuthService {
         }
     }
 
-    async signin(dto: AuthDto){
+    async signin(dto: SignDto){
         //Find the user by email
         const user = await this.prisma.user.findUnique({
             where: {
@@ -92,4 +93,8 @@ export class AuthService {
             access_token: token,
         }
     }   
+
+    public getCookieForLogOut() {
+        return `Authentication=; HttpOnly; Path=/; Max-Age=0`;
+    }
 }
