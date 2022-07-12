@@ -26,7 +26,7 @@ export class ClientService {
     FROM contrato 
       INNER JOIN cobros ON cobros.num_contrato= contrato.num_contrato
       LEFT JOIN abonados ON abonados.cod_abonado= contrato.cod_abonado          
-    WHERE abonados.dni= ${dni} ORDER BY cobros.fecha DESC
+    WHERE abonados.dni= ${dni} and cobros.estado='P' ORDER BY cobros.fecha DESC
     `;
   }
 }
