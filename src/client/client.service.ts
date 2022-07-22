@@ -1,17 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
-
 @Injectable()
 export class ClientService {
+  constructor(private prisma: PrismaService) {}
 
-  constructor(private prisma: PrismaService){
-
-  }
-
-
-
-  async customerDebts(dni: number){
+  async customerDebts(dni: number) {
     return await this.prisma.$queryRaw`
       SELECT
       abonados.nom_abonado,
