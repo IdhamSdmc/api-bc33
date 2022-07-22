@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "DATABASE_URL"
+  url      = "mysql://root:@localhost:3306/multimedia_dbe"
 }
 
 // Create Model to User Table
